@@ -677,6 +677,18 @@ body:has(a:hover, button:hover, .project-holo:hover, .scatter-row:hover) .cursor
   position: relative;
   padding: 100px 40px;
   background: var(--bg);
+  overflow: hidden;
+}
+
+.work-section::before {
+  content: '';
+  position: absolute;
+  top: 10%; left: -10%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 60%);
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .section-edge {
@@ -917,8 +929,21 @@ body:has(a:hover, button:hover, .project-holo:hover, .scatter-row:hover) .cursor
 
 /* ── DESIGN SECTION ──────────────────────── */
 .design-section {
+  position: relative;
   padding: 100px 40px;
   background: var(--bg-2);
+  overflow: hidden;
+}
+
+.design-section::before {
+  content: '';
+  position: absolute;
+  top: 40%; right: -20%;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 60%);
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .design-header {
@@ -1165,8 +1190,21 @@ body:has(a:hover, button:hover, .project-holo:hover, .scatter-row:hover) .cursor
    STORY SECTION — FULL LINUX TERMINAL UPGRADE
 ══════════════════════════════════════════════ */
 .story-section {
+  position: relative;
   padding: 100px 40px;
   background: var(--bg);
+  overflow: hidden;
+}
+
+.story-section::before {
+  content: '';
+  position: absolute;
+  top: 30%; left: -10%;
+  width: 900px; height: 900px;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 60%);
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .story-header {
