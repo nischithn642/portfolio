@@ -392,7 +392,10 @@ body:has(a:hover, button:hover, .project-holo:hover, .scatter-row:hover) .cursor
 }
 
 .title-accent {
-  color: var(--accent);
+  background: linear-gradient(135deg, var(--accent) 20%, var(--accent-3) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent; /* Fallback */
 }
 
 .glitch-char {
@@ -425,8 +428,8 @@ body:has(a:hover, button:hover, .project-holo:hover, .scatter-row:hover) .cursor
 
 @keyframes charGlitchRandom {
   0% { transform: translate(0); }
-  33% { transform: translate(-2px, 1px); color: var(--accent-2); }
-  66% { transform: translate(2px, -1px); color: var(--accent-3); }
+  33% { transform: translate(-2px, 1px); color: var(--accent-2); -webkit-text-fill-color: var(--accent-2); }
+  66% { transform: translate(2px, -1px); color: var(--accent-3); -webkit-text-fill-color: var(--accent-3); }
   100% { transform: translate(0); }
 }
 
@@ -704,7 +707,10 @@ body:has(a:hover, button:hover, .project-holo:hover, .scatter-row:hover) .cursor
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: var(--fg);
+  background: linear-gradient(135deg, var(--fg) 40%, var(--fg-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
   position: relative;
   display: inline-block;
 }
@@ -719,12 +725,14 @@ body:has(a:hover, button:hover, .project-holo:hover, .scatter-row:hover) .cursor
 
 .section-title-glitch::before {
   color: var(--accent-2);
+  -webkit-text-fill-color: var(--accent-2);
   clip-path: inset(0 0 60% 0);
   animation: sectionGlitch1 4s var(--ease-glitch) infinite;
 }
 
 .section-title-glitch::after {
   color: var(--accent-3);
+  -webkit-text-fill-color: var(--accent-3);
   clip-path: inset(40% 0 0 0);
   animation: sectionGlitch2 4s var(--ease-glitch) infinite;
   animation-delay: 2s;
