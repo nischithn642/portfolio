@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <pattern id="scanlines" patternUnits="userSpaceOnUse" width="100" height="4">
+      <rect width="100" height="2" fill="#000000" fill-opacity="0.7"/>
+      <rect y="2" width="100" height="2" fill="transparent"/>
+    </pattern>
+    <filter id="glitch">
+      <feOffset dx="1" dy="0" in="SourceGraphic" result="red-shift"/>
+      <feOffset dx="-1" dy="0" in="SourceGraphic" result="blue-shift"/>
+      <feMerge>
+        <feMergeNode in="red-shift" />
+        <feMergeNode in="blue-shift" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="100" height="100" fill="#0a0a0a" />
+  <text x="41.6" y="55" font-family="'Courier New', monospace" font-size="46" font-weight="900" fill="#d4d4d4" text-anchor="middle" dominant-baseline="middle" transform="scale(1.2, 1)" filter="url(#glitch)">[N.]</text>
+  <rect width="100" height="100" fill="url(#scanlines)" pointer-events="none" />
+</svg>

@@ -69,7 +69,7 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
-  background: var(--bg);
+  background: linear-gradient(180deg, var(--bg) 0%, rgba(255,107,0,0.03) 30%, rgba(0,240,255,0.02) 70%, var(--bg) 100%);
   color: var(--fg);
   line-height: 1.6;
   overflow-x: hidden;
@@ -392,10 +392,7 @@ body:has(a:hover, button:hover, .project-holo:hover, .scatter-row:hover) .cursor
 }
 
 .title-accent {
-  background: linear-gradient(135deg, var(--accent) 20%, var(--accent-3) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent; /* Fallback */
+  color: var(--accent);
 }
 
 .glitch-char {
@@ -679,7 +676,7 @@ body:has(a:hover, button:hover, .project-holo:hover, .scatter-row:hover) .cursor
 .work-section {
   position: relative;
   padding: 100px 40px;
-  background: var(--bg);
+  background: transparent;
 }
 
 .section-edge {
@@ -921,7 +918,7 @@ body:has(a:hover, button:hover, .project-holo:hover, .scatter-row:hover) .cursor
 /* ── DESIGN SECTION ──────────────────────── */
 .design-section {
   padding: 100px 40px;
-  background: var(--bg-2);
+  background: transparent;
 }
 
 .design-header {
@@ -1169,7 +1166,7 @@ body:has(a:hover, button:hover, .project-holo:hover, .scatter-row:hover) .cursor
 ══════════════════════════════════════════════ */
 .story-section {
   padding: 100px 40px;
-  background: var(--bg);
+  background: transparent;
 }
 
 .story-header {
@@ -1450,7 +1447,7 @@ body:has(a:hover, button:hover, .project-holo:hover, .scatter-row:hover) .cursor
 .connect-section {
   position: relative;
   padding: 120px 40px;
-  background: var(--bg-2);
+  background: transparent;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -1604,7 +1601,7 @@ body:has(a:hover, button:hover, .project-holo:hover, .scatter-row:hover) .cursor
 /* ── FOOTER ──────────────────────────────── */
 .site-footer {
   padding: 40px;
-  background: var(--bg);
+  background: transparent;
 }
 
 .footer-line {
