@@ -69,7 +69,7 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
-  background: linear-gradient(180deg, var(--bg) 0%, rgba(255,107,0,0.03) 30%, rgba(0,240,255,0.02) 70%, var(--bg) 100%);
+  background: var(--bg);
   color: var(--fg);
   line-height: 1.6;
   overflow-x: hidden;
@@ -676,7 +676,7 @@ body:has(a:hover, button:hover, .project-holo:hover, .scatter-row:hover) .cursor
 .work-section {
   position: relative;
   padding: 100px 40px;
-  background: transparent;
+  background: var(--bg);
 }
 
 .section-edge {
@@ -918,7 +918,7 @@ body:has(a:hover, button:hover, .project-holo:hover, .scatter-row:hover) .cursor
 /* ── DESIGN SECTION ──────────────────────── */
 .design-section {
   padding: 100px 40px;
-  background: transparent;
+  background: var(--bg-2);
 }
 
 .design-header {
@@ -1166,7 +1166,7 @@ body:has(a:hover, button:hover, .project-holo:hover, .scatter-row:hover) .cursor
 ══════════════════════════════════════════════ */
 .story-section {
   padding: 100px 40px;
-  background: transparent;
+  background: var(--bg);
 }
 
 .story-header {
@@ -1447,7 +1447,7 @@ body:has(a:hover, button:hover, .project-holo:hover, .scatter-row:hover) .cursor
 .connect-section {
   position: relative;
   padding: 120px 40px;
-  background: transparent;
+  background: var(--bg-2);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -1601,7 +1601,7 @@ body:has(a:hover, button:hover, .project-holo:hover, .scatter-row:hover) .cursor
 /* ── FOOTER ──────────────────────────────── */
 .site-footer {
   padding: 40px;
-  background: transparent;
+  background: var(--bg);
 }
 
 .footer-line {
