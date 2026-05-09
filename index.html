@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NISCHITH N. // VLSI ENGINEER</title>
+<meta name="description" content="Nischith N. — VLSI Engineering student at NMIT Bengaluru. Hardware accelerator design, UVM verification, Graphic Designer, and Entrepreneurship enthusiast."/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                accent: "#FF6B00",
+                "accent-2": "#00F0FF",
+                "accent-3": "#FF00E5",
+                "surface-0": "#050505",
+                "surface-1": "#0a0a0a",
+                "surface-2": "#111111",
+                "text-primary": "#E8E8E8",
+                "text-secondary": "#888888",
+                "text-dim": "#333333",
+            },
+            fontFamily: {
+                headline: ["Syncopate", "sans-serif"],
+                body: ["Manrope", "sans-serif"],
+                mono: ["JetBrains Mono", "monospace"],
+                grotesk: ["Space Grotesk", "sans-serif"],
+            },
+        },
+    }
+};
+</script>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     CRT / GLITCH OVERLAY SYSTEM
+═══════════════════════════════════════════ -->
+<div class="crt-overlay">
+    <div class="scanlines"></div>
+    <div class="crt-flicker"></div>
+    <div class="vignette"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     CUSTOM CURSOR WITH TRAIL
+═══════════════════════════════════════════ -->
+<div class="cursor-main" id="cursor-main"></div>
+<div class="cursor-trail" id="cursor-trail"></div>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION — MINIMAL GLITCH
+═══════════════════════════════════════════ -->
+<nav class="main-nav" id="main-nav">
+    <a href="#hero" class="nav-brand glitch-text" data-text="[N.]">[N.]</a>
+    <div class="nav-items">
+        <a href="#work" class="nav-item"><span class="nav-num">01</span>WORK</a>
+        <a href="#story" class="nav-item"><span class="nav-num">02</span>STORY</a>
+        <a href="Resume-Nischith N.pdf" target="_blank" class="nav-item"><span class="nav-num">03</span>RESUME</a>
+        <a href="#connect" class="nav-item"><span class="nav-num">04</span>CONNECT</a>
+    </div>
+    <button id="theme-toggle" class="nav-theme" aria-label="Toggle theme">◐</button>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     HERO — FULLSCREEN TERMINAL / GLITCH
+═══════════════════════════════════════════ -->
+<section id="hero" class="hero">
+    <!-- Particle circuit network canvas -->
+    <canvas id="hero-particles" class="hero-particles"></canvas>
+
+    <!-- Grid overlay -->
+    <div class="hero-grid-overlay"></div>
+
+    <!-- Main content -->
+    <div class="hero-content">
+        <div class="hero-meta">
+            <span class="meta-line"></span>
+            <span class="meta-text" id="typewriter"></span>
+            <span class="meta-cursor">_</span>
+        </div>
+
+        <h1 class="hero-title">
+            <span class="title-row">
+                <span class="glitch-char" data-char="N">N</span>
+                <span class="glitch-char" data-char="I">I</span>
+                <span class="glitch-char" data-char="S">S</span>
+                <span class="glitch-char" data-char="C">C</span>
+                <span class="glitch-char" data-char="H">H</span>
+                <span class="glitch-char" data-char="I">I</span>
+                <span class="glitch-char" data-char="T">T</span>
+                <span class="glitch-char" data-char="H">H</span>
+            </span>
+            <span class="title-row title-accent">
+                <span class="glitch-char" data-char="N">N</span>
+                <span class="glitch-char" data-char=".">.</span>
+            </span>
+        </h1>
+
+        <div class="hero-sub" id="hero-sub">
+            <p class="sub-line">Curious Explorer</p>
+        </div>
+
+        <div class="hero-actions">
+            <a href="Resume-Nischith N.pdf" target="_blank" class="btn-glitch">
+                <span class="btn-text" data-text="DOWNLOAD_RESUME">DOWNLOAD_RESUME</span>
+            </a>
+            <a href="#work" class="btn-ghost">
+                <span class="btn-text">EXPLORE_WORK</span>
+                <span class="btn-arrow">→</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Side decorations -->
+    <div class="side-deco side-left">
+        <div class="deco-line"></div>
+        <span class="deco-text">SCROLL</span>
+        <div class="deco-line"></div>
+    </div>
+    <div class="side-deco side-right">
+        <span class="deco-coords" id="coords">00.00°N 00.00°E</span>
+    </div>
+
+    <!-- Bottom data strip -->
+    <div class="data-strip">
+        <div class="data-item">
+            <span class="data-label">STATUS</span>
+            <span class="data-value blink">AVAILABLE_FOR_HIRE</span>
+        </div>
+        <div class="data-item">
+            <span class="data-label">LOCATION</span>
+            <span class="data-value">BENGALURU, IN</span>
+        </div>
+        <div class="data-item">
+            <span class="data-label">SPECS</span>
+            <span class="data-value">VLSI × UI/UX × Growth</span>
+        </div>
+        <div class="data-item">
+            <span class="data-label">YEAR</span>
+            <span class="data-value" id="year">2025</span>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     MARQUEE — DISTORTED
+═══════════════════════════════════════════ -->
+<div class="distort-marquee">
+    <div class="marquee-track" id="marquee-track">
+        <div class="marquee-content">
+            <span class="mq-item">RTL DESIGN</span>
+            <span class="mq-sep">◆</span>
+            <span class="mq-item">SYSTEMVERILOG</span>
+            <span class="mq-sep">◆</span>
+            <span class="mq-item">UVM VERIFICATION</span>
+            <span class="mq-sep">◆</span>
+            <span class="mq-item">FPGA DEVELOPMENT</span>
+            <span class="mq-sep">◆</span>
+            <span class="mq-item">SHA-256 HARDWARE</span>
+            <span class="mq-sep">◆</span>
+            <span class="mq-item">AHB-LITE PROTOCOL</span>
+            <span class="mq-sep">◆</span>
+            <span class="mq-item">EMBEDDED SYSTEMS</span>
+            <span class="mq-sep">◆</span>
+            <span class="mq-item">PYTHON</span>
+            <span class="mq-sep">◆</span>
+            <span class="mq-item">FIGMA & UI DESIGN</span>
+            <span class="mq-sep">◆</span>
+            <span class="mq-item">GROWTH STRATEGY</span>
+            <span class="mq-sep">◆</span>
+            <span class="mq-item">EVENT MANAGEMENT</span>
+            <span class="mq-sep">◆</span>
+        </div>
+        <div class="marquee-content" aria-hidden="true">
+            <span class="mq-item">RTL DESIGN</span>
+            <span class="mq-sep">◆</span>
+            <span class="mq-item">SYSTEMVERILOG</span>
+            <span class="mq-sep">◆</span>
+            <span class="mq-item">UVM VERIFICATION</span>
+            <span class="mq-sep">◆</span>
+            <span class="mq-item">FPGA DEVELOPMENT</span>
+            <span class="mq-sep">◆</span>
+            <span class="mq-item">SHA-256 HARDWARE</span>
+            <span class="mq-sep">◆</span>
+            <span class="mq-item">AHB-LITE PROTOCOL</span>
+            <span class="mq-sep">◆</span>
+            <span class="mq-item">EMBEDDED SYSTEMS</span>
+            <span class="mq-sep">◆</span>
+            <span class="mq-item">PYTHON</span>
+            <span class="mq-sep">◆</span>
+            <span class="mq-item">FIGMA & UI DESIGN</span>
+            <span class="mq-sep">◆</span>
+            <span class="mq-item">GROWTH STRATEGY</span>
+            <span class="mq-sep">◆</span>
+            <span class="mq-item">EVENT MANAGEMENT</span>
+            <span class="mq-sep">◆</span>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PROJECTS — HOLOGRAPHIC CARDS
+═══════════════════════════════════════════ -->
+<section id="work" class="work-section">
+    <div class="section-edge edge-top"></div>
+
+    <div class="work-header">
+        <span class="section-num">01</span>
+        <h2 class="section-title-glitch" data-text="SELECTED_WORK">SELECTED_WORK</h2>
+        <p class="section-desc">Hardware accelerators, verified RTL architectures, and embedded systems built from first principles.</p>
+    </div>
+
+    <div class="projects-list">
+        <!-- Project 1 -->
+        <article class="project-holo" data-project="1">
+            <div class="holo-bg"></div>
+            <div class="holo-content">
+                <div class="holo-meta">
+                    <span class="holo-num">01</span>
+                    <div class="holo-tags">
+                        <span class="holo-tag">SystemVerilog</span>
+                        <span class="holo-tag">FPGA</span>
+                        <span class="holo-tag">SHA-256</span>
+                    </div>
+                </div>
+                <h3 class="holo-title">Bitcoin Mining Accelerator</h3>
+                <p class="holo-desc">Modular hardware accelerator implementing the SHA-256d algorithm on FPGA — decomposed into 7 integrated modules. Pipelined dual SHA-256 engine with parallel processing cores, validated through full functional verification.</p>
+                <a href="Projects/bitcoin acceleraor.pdf" target="_blank" class="holo-link">
+                    <span>VIEW_PROJECT</span>
+                    <span class="holo-arrow">↗</span>
+                </a>
+            </div>
+            <div class="holo-glitch-bar"></div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-holo" data-project="2">
+            <div class="holo-bg"></div>
+            <div class="holo-content">
+                <div class="holo-meta">
+                    <span class="holo-num">02</span>
+                    <div class="holo-tags">
+                        <span class="holo-tag">Verilog</span>
+                        <span class="holo-tag">UVM</span>
+                        <span class="holo-tag">AHB-Lite</span>
+                    </div>
+                </div>
+                <h3 class="holo-title">2-Channel DMA Controller</h3>
+                <p class="holo-desc">Dual-channel DMA with AHB-Lite bus interface. Built a UVM environment with RAL-based config and constrained-random test generation — <strong>100% scoreboard pass rate</strong>, 0 errors in 4-word burst transfers at 545 ns.</p>
+                <a href="Projects/UVM (1).pdf" target="_blank" class="holo-link">
+                    <span>VIEW_PROJECT</span>
+                    <span class="holo-arrow">↗</span>
+                </a>
+            </div>
+            <div class="holo-glitch-bar"></div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-holo" data-project="3">
+            <div class="holo-bg"></div>
+            <div class="holo-content">
+                <div class="holo-meta">
+                    <span class="holo-num">03</span>
+                    <div class="holo-tags">
+                        <span class="holo-tag">ESP32</span>
+                        <span class="holo-tag">Embedded C</span>
+                        <span class="holo-tag">IoT</span>
+                    </div>
+                </div>
+                <h3 class="holo-title">Rain-Sensing Wiper</h3>
+                <p class="holo-desc">Automated wiper system using ESP32 and a rain sensor — 4 operational states, servo-based wiper control logic with live serial diagnostics. Achieved a <strong>250 ms response cycle</strong> under maximum load conditions.</p>
+                <a href="Projects/embedded_system_project (1).pdf" target="_blank" class="holo-link">
+                    <span>VIEW_PROJECT</span>
+                    <span class="holo-arrow">↗</span>
+                </a>
+            </div>
+            <div class="holo-glitch-bar"></div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-holo" data-project="4">
+            <div class="holo-bg"></div>
+            <div class="holo-content">
+                <div class="holo-meta">
+                    <span class="holo-num">04</span>
+                    <div class="holo-tags">
+                        <span class="holo-tag">SystemVerilog</span>
+                        <span class="holo-tag">RTL Design</span>
+                        <span class="holo-tag">Neural Nets</span>
+                    </div>
+                </div>
+                <h3 class="holo-title">NueroRTL</h3>
+                <p class="holo-desc">Hardware implementation of Neural Networks using RTL. Architected for fast inference, exploring low power and latency constraints using SystemVerilog.</p>
+                <a href="https://github.com/nischithn642/NueroRTL.git" target="_blank" class="holo-link">
+                    <span>VIEW_PROJECT</span>
+                    <span class="holo-arrow">↗</span>
+                </a>
+            </div>
+            <div class="holo-glitch-bar"></div>
+        </article>
+    </div>
+
+    <div class="section-edge edge-bottom"></div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     DESIGN PORTFOLIO — SCATTER GRID
+═══════════════════════════════════════════ -->
+<section class="design-section" id="design">
+    <div class="design-header">
+        <span class="section-num">02</span>
+        <h2 class="section-title-glitch" data-text="CREATIVE_WORK">CREATIVE_WORK</h2>
+        <p class="section-desc">Branding, event marketing collateral, and pitch deck design.</p>
+    </div>
+
+    <div class="design-scatter">
+        <div class="scatter-row" data-scatter="posts">
+            <div class="scatter-backdrop"></div>
+            <div class="scatter-content">
+                <span class="scatter-label">01</span>
+                <h3 class="scatter-title">POSTS & BANNERS</h3>
+                <span class="scatter-count">11 items</span>
+            </div>
+            <div class="scatter-images">
+                <img loading="lazy" src="design portfolio/posts and banners/ANaadyanta(port).jpg" class="scatter-img" alt="">
+                <img loading="lazy" src="design portfolio/posts and banners/Enigma Ideathon Banner(PORT).jpg" class="scatter-img" alt="">
+                <img loading="lazy" src="design portfolio/posts and banners/vortex logo green.jpg" class="scatter-img" alt="">
+                <img loading="lazy" src="design portfolio/posts and banners/IDEATHON POST(PORT).jpg" class="scatter-img" alt="">
+                <img loading="lazy" src="design portfolio/posts and banners/goat1(PORT).jpg" class="scatter-img" alt="">
+                <img loading="lazy" src="design portfolio/posts and banners/Frame 101.jpg" class="scatter-img" alt="">
+                <img loading="lazy" src="design portfolio/posts and banners/Frame 93.jpg" class="scatter-img" alt="">
+                <img loading="lazy" src="design portfolio/posts and banners/Instagram post - 1.jpg" class="scatter-img" alt="">
+                <img loading="lazy" src="design portfolio/posts and banners/Instagram post - 2.jpg" class="scatter-img" alt="">
+                <img loading="lazy" src="design portfolio/posts and banners/Instagram post - 3.jpg" class="scatter-img" alt="">
+                <img loading="lazy" src="design portfolio/posts and banners/Instagram post - 4.jpg" class="scatter-img" alt="">
+            </div>
+        </div>
+
+        <div class="scatter-row" data-scatter="yc">
+            <div class="scatter-backdrop"></div>
+            <div class="scatter-content">
+                <span class="scatter-label">02</span>
+                <h3 class="scatter-title">YC POSTS</h3>
+                <span class="scatter-count">5 items</span>
+            </div>
+            <div class="scatter-images">
+                <img loading="lazy" src="design portfolio/YC post/1.jpg" class="scatter-img" alt="">
+                <img loading="lazy" src="design portfolio/YC post/2.jpg" class="scatter-img" alt="">
+                <img loading="lazy" src="design portfolio/YC post/3.jpg" class="scatter-img" alt="">
+                <img loading="lazy" src="design portfolio/YC post/4.jpg" class="scatter-img" alt="">
+                <img loading="lazy" src="design portfolio/YC post/5.jpg" class="scatter-img" alt="">
+            </div>
+        </div>
+
+        <div class="scatter-row" data-scatter="hoti">
+            <div class="scatter-backdrop"></div>
+            <div class="scatter-content">
+                <span class="scatter-label">03</span>
+                <h3 class="scatter-title">HORI WEBSITE</h3>
+                <span class="scatter-count">5 items</span>
+            </div>
+            <div class="scatter-images">
+                <img loading="lazy" src="design portfolio/hoti website design for client/MacBook Pro 16_ - 11.png" class="scatter-img" alt="">
+                <img loading="lazy" src="design portfolio/hoti website design for client/MacBook Pro 16_ - 4.png" class="scatter-img" alt="">
+                <img loading="lazy" src="design portfolio/hoti website design for client/MacBook Pro 16_ - 7.png" class="scatter-img" alt="">
+                <img loading="lazy" src="design portfolio/hoti website design for client/MacBook Pro 16_ - 8.png" class="scatter-img" alt="">
+                <img loading="lazy" src="design portfolio/hoti website design for client/MacBook Pro 16_ - 9.png" class="scatter-img" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!-- Pitch Decks -->
+    <div class="pitch-section">
+        <h3 class="pitch-header">PITCH_DECKS & PRESENTATIONS</h3>
+        <div class="pitch-list">
+            <a href="design portfolio/event ppts/FARM SETU (1).pdf" target="_blank" class="pitch-item">
+                <span class="pitch-index">01</span>
+                <span class="pitch-name">FARM SETU</span>
+                <span class="pitch-type">Pitch Deck</span>
+                <span class="pitch-arrow">↗</span>
+            </a>
+            <a href="design portfolio/event ppts/Invaso-Futureprenuers.pdf.pdf" target="_blank" class="pitch-item">
+                <span class="pitch-index">02</span>
+                <span class="pitch-name">Invaso - Futurepreneurs</span>
+                <span class="pitch-type">Event Presentation</span>
+                <span class="pitch-arrow">↗</span>
+            </a>
+            <a href="design portfolio/event ppts/What is Innovation.pdf" target="_blank" class="pitch-item">
+                <span class="pitch-index">03</span>
+                <span class="pitch-name">What is Innovation</span>
+                <span class="pitch-type">Keynote</span>
+                <span class="pitch-arrow">↗</span>
+            </a>
+            <a href="design portfolio/event ppts/iith ppt.pdf" target="_blank" class="pitch-item">
+                <span class="pitch-index">04</span>
+                <span class="pitch-name">IIT Hyderabad</span>
+                <span class="pitch-type">Boardroom Pitch</span>
+                <span class="pitch-arrow">↗</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ABOUT — TERMINAL STYLE
+═══════════════════════════════════════════ -->
+<section id="story" class="story-section">
+    <div class="story-header">
+        <span class="section-num">03</span>
+        <h2 class="section-title-glitch" data-text="THE_STORY">THE_STORY</h2>
+    </div>
+
+    <div class="terminal-window">
+        <div class="terminal-bar">
+            <div class="terminal-dots">
+                <span></span><span></span><span></span>
+            </div>
+            <span class="terminal-title">
+                <span class="term-user">nischith</span><span class="term-at">@</span><span class="term-host">nmit-vlsi</span><span class="term-path">:~</span>
+            </span>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+
+            <!-- neofetch-style boot line -->
+            <div class="term-line">
+                <span class="term-ps1">
+                    <span class="term-user-ps1">nischith</span><span class="term-at-ps1">@</span><span class="term-host-ps1">nmit-vlsi</span><span class="term-sep-ps1">:</span><span class="term-path-ps1">~</span><span class="term-dollar">$</span>
+                </span>
+                <span class="term-cmd">neofetch --off</span>
+            </div>
+            <div class="term-output">
+                <p><span class="term-info">OS:</span>       <span class="term-dim">Ubuntu 24.04 LTS (Nischith Edition)</span></p>
+                <p><span class="term-info">Host:</span>     NMIT Bengaluru — B.E. Electronics, VLSI Track</p>
+                <p><span class="term-info">CGPA:</span>     <span class="term-highlight">8.76</span> / 10.0 &nbsp;<span class="term-dim">(2023–2027)</span></p>
+                <p><span class="term-info">Status:</span>   <span class="term-success blink">● AVAILABLE_FOR_HIRE</span></p>
+            </div>
+
+            <div class="term-divider"></div>
+
+            <!-- whoami -->
+            <div class="term-line">
+                <span class="term-ps1">
+                    <span class="term-user-ps1">nischith</span><span class="term-at-ps1">@</span><span class="term-host-ps1">nmit-vlsi</span><span class="term-sep-ps1">:</span><span class="term-path-ps1">~</span><span class="term-dollar">$</span>
+                </span>
+                <span class="term-cmd">whoami</span>
+            </div>
+            <div class="term-output">
+                <p>VLSI Engineer × Design Lead × Entrepreneur</p>
+                <p>Nitte Meenakshi Institute of Technology, Bengaluru</p>
+            </div>
+
+            <!-- leadership -->
+            <div class="term-line">
+                <span class="term-ps1">
+                    <span class="term-user-ps1">nischith</span><span class="term-at-ps1">@</span><span class="term-host-ps1">nmit-vlsi</span><span class="term-sep-ps1">:</span><span class="term-path-ps1">~</span><span class="term-dollar">$</span>
+                </span>
+                <span class="term-cmd">cat leadership.txt</span>
+            </div>
+            <div class="term-output">
+                <p><span class="term-badge term-badge-gold">VP</span> <span class="term-highlight">Vice President</span> — Enigma E-Cell, NMIT <span class="term-dim">(2025–Present)</span></p>
+                <p>&nbsp;&nbsp;└─ Led <span class="term-highlight">75+ member team</span> • Organized Enfinity 2025 with <span class="term-highlight">1000+ attendees</span></p>
+                <p>&nbsp;&nbsp;└─ Hosted <span class="term-highlight">Ideathon 7.0</span> — 100+ participants, 27 startup ideas</p>
+                <p><span class="term-badge term-badge-blue">DL</span> <span class="term-highlight">Design Lead</span> — Vortex VLSI Club, NMIT <span class="term-dim">(Jun 2025–Mar 2026)</span></p>
+                <p>&nbsp;&nbsp;└─ Directed branding & UI/UX • <span class="term-highlight">Scaled club engagement by 40%</span></p>
+                <p>&nbsp;&nbsp;└─ Designed high-impact tech assets • <span class="term-highlight">Led a 5-member creative team</span></p>
+            </div>
+
+            <!-- skills -->
+            <div class="term-line">
+                <span class="term-ps1">
+                    <span class="term-user-ps1">nischith</span><span class="term-at-ps1">@</span><span class="term-host-ps1">nmit-vlsi</span><span class="term-sep-ps1">:</span><span class="term-path-ps1">~</span><span class="term-dollar">$</span>
+                </span>
+                <span class="term-cmd">ls -la skills/</span>
+            </div>
+            <div class="term-output">
+                <div class="term-skills">
+                    <span class="term-skill">Verilog_HDL</span>
+                    <span class="term-skill">SystemVerilog</span>
+                    <span class="term-skill">UVM</span>
+                    <span class="term-skill">C/C++</span>
+                    <span class="term-skill">Python</span>
+                    <span class="term-skill">Embedded_C</span>
+                    <span class="term-skill">Cadence</span>
+                    <span class="term-skill">Vivado</span>
+                    <span class="term-skill">LTSpice</span>
+                    <span class="term-skill">Figma</span>
+                    <span class="term-skill">SolidWorks</span>
+                    <span class="term-skill">Canva</span>
+                    <span class="term-skill">Adobe_Illustrator</span>
+                </div>
+            </div>
+
+            <!-- achievements -->
+            <div class="term-line">
+                <span class="term-ps1">
+                    <span class="term-user-ps1">nischith</span><span class="term-at-ps1">@</span><span class="term-host-ps1">nmit-vlsi</span><span class="term-sep-ps1">:</span><span class="term-path-ps1">~</span><span class="term-dollar">$</span>
+                </span>
+                <span class="term-cmd">cat achievements.log | grep -i "WIN\|TOP"</span>
+            </div>
+            <div class="term-output">
+                <p>[2026] <span class="term-badge term-badge-gold">🏆 WIN</span> <a href="mockstock.jpg" target="_blank" class="term-achievement hover-link">Mockstock Winner</a> — TechSolstice '26, MIT Bangalore</p>
+                <p>[2025] <span class="term-badge term-badge-blue">🚀 WIN</span> <a href="iith boardroom.jpg" target="_blank" class="term-achievement hover-link">Emerge '25 Boardroom Winner</a> — IIT Hyderabad</p>
+                <p>[2024] <span class="term-badge term-badge-green">🌟 TOP</span> <a href="startup mahakhumbh.jpg" target="_blank" class="term-achievement hover-link">Startup Mahakumbh Top 20</a> — India's largest startup event</p>
+            </div>
+
+            <!-- education -->
+            <div class="term-line">
+                <span class="term-ps1">
+                    <span class="term-user-ps1">nischith</span><span class="term-at-ps1">@</span><span class="term-host-ps1">nmit-vlsi</span><span class="term-sep-ps1">:</span><span class="term-path-ps1">~</span><span class="term-dollar">$</span>
+                </span>
+                <span class="term-cmd">cat education.md</span>
+            </div>
+            <div class="term-output">
+                <p><span class="term-info">#</span> Nitte Meenakshi Institute of Technology</p>
+                <p>&nbsp;&nbsp;B.E. Electronics — VLSI Design &amp; Technology | CGPA: <span class="term-highlight">8.76</span></p>
+                <p><span class="term-info">#</span> Base PU College, Bengaluru | <span class="term-highlight-b">94.75%</span></p>
+                <p><span class="term-info">#</span> Sindhi High School, Bengaluru | <span class="term-highlight-b">91.20%</span></p>
+            </div>
+
+            <!-- certifications -->
+            <div class="term-line">
+                <span class="term-ps1">
+                    <span class="term-user-ps1">nischith</span><span class="term-at-ps1">@</span><span class="term-host-ps1">nmit-vlsi</span><span class="term-sep-ps1">:</span><span class="term-path-ps1">~</span><span class="term-dollar">$</span>
+                </span>
+                <span class="term-cmd">ls certifications/ --color=auto</span>
+            </div>
+            <div class="term-output">
+                <p><span class="term-success">Pro_Python_Bootcamp</span><span class="term-dim">—Udemy.pdf</span></p>
+                <p><span class="term-success">FPGA_Certificate</span><span class="term-dim">—TOR_VERGATA.pdf</span></p>
+                <p><span class="term-success">Discovering_Entrepreneurship</span><span class="term-dim">—Cisco.pdf</span></p>
+                <p><span class="term-success">Industry_4.0_and_3D_Printing</span><span class="term-dim">.pdf</span></p>
+            </div>
+
+            <!-- interactive input -->
+            <div class="term-line" id="term-input-container">
+                <span class="term-ps1">
+                    <span class="term-user-ps1">nischith</span><span class="term-at-ps1">@</span><span class="term-host-ps1">nmit-vlsi</span><span class="term-sep-ps1">:</span><span class="term-path-ps1">~</span><span class="term-dollar">$</span>
+                </span>
+                <input type="text" id="term-input" class="term-input-field" autocomplete="off" spellcheck="false" placeholder="type 'help' for commands..." />
+            </div>
+
+        </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CONNECT — GLITCH CTA
+═══════════════════════════════════════════ -->
+<section id="connect" class="connect-section">
+    <div class="connect-bg">
+        <div class="connect-blob"></div>
+    </div>
+
+    <div class="connect-content">
+        <span class="connect-label">// INITIATE_CONTACT</span>
+        <h2 class="connect-title">
+            <span class="glitch-text" data-text="LET'S BUILD">LET'S BUILD</span>
+            <br/>
+            <span class="glitch-text" data-text="SOMETHING">SOMETHING</span>
+            <br/>
+            <span class="connect-accent glitch-text" data-text="INSANE.">INSANE.</span>
+        </h2>
+
+        <a href="mailto:nischithn642@gmail.com" class="connect-cta">
+            <span class="cta-text">SEND_EMAIL</span>
+            <span class="cta-glitch" data-text="SEND_EMAIL">SEND_EMAIL</span>
+        </a>
+
+        <div class="connect-socials">
+            <a href="https://www.linkedin.com/in/nischith-n" target="_blank" class="social-glitch" data-text="LINKEDIN">LINKEDIN</a>
+            <a href="https://github.com/nischithn642" target="_blank" class="social-glitch" data-text="GITHUB">GITHUB</a>
+            <a href="https://www.instagram.com/_nischith_n?igsh=MWpwcW9lZ25oZTY0eg%3D%3D&utm_source=qr" target="_blank" class="social-glitch" data-text="INSTAGRAM">INSTAGRAM</a>
+            <a href="tel:+917022437456" class="social-glitch" data-text="+91_70224_37456">+91_70224_37456</a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER — MINIMAL
+═══════════════════════════════════════════ -->
+<footer class="site-footer">
+    <div class="footer-line"></div>
+    <div class="footer-content">
+        <span class="footer-brand">[N.]</span>
+        <span class="footer-copy">© 2025 NISCHITH N. // ALL SYSTEMS OPERATIONAL</span>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

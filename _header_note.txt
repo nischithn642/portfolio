@@ -1,0 +1,7 @@
+/* ============================================================
+   FULL PORTFOLIO HTML  — Nischith N. | Engineering Editorial
+   All original Stitch content preserved.
+   Added: grain hero, reveal animations, marquee strip,
+          3D connect button, custom cursor, scroll-reveal,
+          project card upgrades, contact section.
+   ============================================================ */
